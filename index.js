@@ -5,7 +5,7 @@ var DECREMENT = 'DECREMENT';
 
 
 
-//action creators
+// action creators
 
 var incrementAction = function(){
     return {
@@ -18,3 +18,27 @@ var decrementAction = function(){
         type: DECREMENT
     };
 };
+
+
+
+// reducers
+
+var initalState = 0;
+
+var counterReducer = function(state, action) {
+    if(typeof state === 'undefined') {
+        return initialState;
+    }
+
+    switch(action.type) {
+    case INCREMENT:
+        return state++;
+    case DECREMENT:
+        return state--;
+    default:
+        return state;
+    }
+};
+
+
+
