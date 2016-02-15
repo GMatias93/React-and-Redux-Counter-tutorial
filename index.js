@@ -37,12 +37,32 @@ var counterReducer = function(state, action) {
 
 
 
+
+// React Component
+
+var Counter = React.createClass({
+    render: function() {
+        return (
+            <div>
+              <h1>{this.props.value}</h1>
+              <button onClick={this.props.onIncrement}>Increment</button>
+              <button onClick={this.props.onDecrement}>Decrement</button>
+            </div>
+        );
+    }
+});
+
+
 // store
 
 var store = Redux.createStore(counterReducer);
-var value = document.getElementById('value');
 var render = function() {
-    value.innerHTML = store.getState().toString();
+    ReactDOM.render(
+        <Counter
+           value={store.getState()}
+           onIncrement={function(){store.dispatch(incrementAction);}}
+           onDecrement={function(){store.dispatch(decrementAction);}}/>,
+        document.querySelector('.container'));
 };
 
 render();
@@ -64,3 +84,4 @@ document.getElementById('asyncIncrement')
             store.dispatch(incrementAction);
         }, 1000);
     });
+
