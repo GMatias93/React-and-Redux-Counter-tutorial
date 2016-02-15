@@ -5,25 +5,20 @@ var DECREMENT = 'DECREMENT';
 
 
 
-// action creators
+// actions
 
-var incrementAction = function(){
-    return {
-        type: INCREMENT
-    };
+var incrementAction = {
+    type: INCREMENT
 };
 
-var decrementAction = function(){
-    return {
-        type: DECREMENT
-    };
+var decrementAction = {
+    type: DECREMENT
 };
-
 
 
 // reducers
 
-var initalState = 0;
+var initialState = 0;
 
 var counterReducer = function(state, action) {
     if(typeof state === 'undefined') {
@@ -32,9 +27,9 @@ var counterReducer = function(state, action) {
 
     switch(action.type) {
     case INCREMENT:
-        return state++;
+        return state + 1;
     case DECREMENT:
-        return state--;
+        return state - 1;
     default:
         return state;
     }
@@ -42,3 +37,30 @@ var counterReducer = function(state, action) {
 
 
 
+// store
+
+var store = Redux.createStore(counterReducer);
+var value = document.getElementById('value');
+var render = function() {
+    value.innerHTML = store.getState().toString();
+};
+
+render();
+store.subscribe(render);
+
+document.getElementById('Increment')
+    .addEventListener('click', function(){
+        store.dispatch(incrementAction);
+    });
+
+document.getElementById('Decrement')
+    .addEventListener('click', function(){
+        store.dispatch(decrementAction);
+    });
+
+document.getElementById('asyncIncrement')
+    .addEventListener('click', function(){
+        setTimeout( function() {
+            store.dispatch(incrementAction);
+        }, 1000);
+    });
