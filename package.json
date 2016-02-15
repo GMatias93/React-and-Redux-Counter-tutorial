@@ -1,0 +1,28 @@
+{
+  "name": "counter-tutorial",
+  "version": "1.0.0",
+  "description": "counter tutorial with React, Redux, and ES2015",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GMatias93/Redux-Counter.git"
+  },
+  "keywords": [
+    "Redux",
+    "React",
+    "Es2015",
+    "JavaScript"
+  ],
+  "author": "Gabriel Matias",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GMatias93/Redux-Counter/issues"
+  },
+  "homepage": "https://github.com/GMatias93/Redux-Counter#readme",
+  "devDependencies": {
+    "babel-preset-react": "^6.5.0"
+  }
+}
